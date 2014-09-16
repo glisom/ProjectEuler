@@ -17,7 +17,7 @@ def factors(x)
 end
 
 while divisors <= 500 do
-for i in 1..10000000000 do
+for i in 9000000000..10000000000 do
   divisors = factors(triangular(10000))
 end
 end
