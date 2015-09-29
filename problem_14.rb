@@ -1,25 +1,36 @@
-def collatz(snum)
-  length = 0
-  while snum != 1 do
-    if snum.even?
-      n = snum/2
-    elsif snum.odd?
-      n = (3*snum) + 1
+def even_num (n)
+    return n/2
+end
+
+def odd_num (n)
+    return (3*n) + 1
+end
+
+def collatz (x)
+    terms = 0
+    while x != 1
+        if x.even?
+            x = even_num(x)
+            terms = terms + 1
+        elsif x.odd?
+            x = odd_num(x)
+            terms = terms + 1
+        else
+        end
     end
-    length = length + 1
-  end
-  return length
+    return terms
 end
 
-max_length = 0
-max_integer = 0
-
-500001.step(1000000, 2).each do |n|
-  l = collatz(n)
-  if l > max_length
-    max_length = l
-    max_integer = n
-  end
+x = 0
+number = 0
+for i in 10..1000000
+    y = collatz(i)
+    if y > x
+        x = y
+        number = i
+    else
+    end
 end
 
-puts max_integer
+puts x
+puts number
