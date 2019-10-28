@@ -14,9 +14,9 @@ import Foundation
 
 let upperLimit = 28123
 var abundentNumbers: [Int] = []
-for num in 1...upperLimit {
+for num in 12...upperLimit {
     var divisors: [Int] = []
-    for divisor in 1...num {
+    for divisor in 1...(num - 1) {
         if num % divisor == 0 {
             divisors.append(divisor)
         }
@@ -24,4 +24,21 @@ for num in 1...upperLimit {
     if divisors.reduce(0, +) > num {
         abundentNumbers.append(num)
     }
+    
 }
+var sums: [Int] = []
+for i in 0...abundentNumbers.count {
+    if i < abundentNumbers.count - 2 {
+        let sum = abundentNumbers[i] + abundentNumbers[i+1]
+        if sum < upperLimit {
+            sums.append(sum)
+        }
+    }
+}
+var totalSum = 0
+for num in 1...upperLimit {
+    if sums.contains(num) {
+        totalSum += num
+    }
+}
+print(totalSum)
